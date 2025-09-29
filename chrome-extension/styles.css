@@ -1,0 +1,591 @@
+/**
+ * Burble Chrome Extension Styles
+ * 
+ * This file contains styles for the extension popup and game pages.
+ * Using Apple-inspired clean and modern aesthetic.
+ */
+
+/* Global styles and variables */
+:root {
+  --primary: #0071e3;
+  --primary-hover: #0077ed;
+  --primary-light: #e8f4ff;
+  --secondary: #fb5c74;
+  --accent: #5e5ce6;
+  --success: #34c759;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+  --dark: #1d1d1f;
+  --gray-dark: #424245;
+  --gray: #86868b;
+  --gray-light: #d2d2d7;
+  --gray-lightest: #f5f5f7;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--gray-lightest);
+  color: var(--dark);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Popup container */
+.popup-container {
+  width: 360px;
+  min-height: 480px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Game container */
+.game-container {
+  width: 480px;
+  min-height: 560px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Valentine game container */
+.valentine-container {
+  background-color: #ffebee;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-button {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--gray-lightest);
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--gray-dark);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--gray-light);
+}
+
+/* Game Selection */
+.game-selection {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.difficulty-selector {
+  margin-bottom: 1rem;
+}
+
+.difficulty-selector h3,
+.category-selector h3 {
+  font-size: 0.875rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.difficulty-option, 
+.category-option {
+  padding: 0.5rem;
+  background-color: var(--gray-lightest);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.difficulty-option:hover,
+.category-option:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.difficulty-option.active,
+.category-option.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.game-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.game-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--dark);
+}
+
+.coming-soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.625rem;
+  padding: 0.25rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Stats Display */
+.stats-display {
+  padding: 1rem;
+  background-color: var(--gray-lightest);
+  border-radius: var(--radius-md);
+  margin: 0 1rem 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: var(--white);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-light);
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--gray-light);
+}
+
+.full-app-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.full-app-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.version {
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+/* Game Section */
+.game-section {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+/* Question Container */
+.question-container {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-light);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.attempts-text {
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-align: center;
+}
+
+/* Answer Buttons */
+.answer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.answer-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.yes-button {
+  background-color: var(--success);
+  color: white;
+}
+
+.no-button {
+  background-color: var(--danger);
+  color: white;
+}
+
+.unsure-button {
+  background-color: var(--warning);
+  color: white;
+}
+
+.answer-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Hint Section */
+.hint-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hint-button {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: center;
+}
+
+.hint-button:hover {
+  opacity: 0.9;
+}
+
+.hint-info {
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: var(--dark);
+}
+
+/* Guess Input */
+.guess-input {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.guess-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+}
+
+.guess-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+}
+
+.guess-input input.incorrect {
+  animation: shake 0.5s;
+  border-color: var(--danger);
+}
+
+.guess-input button,
+.submit-button {
+  padding: 0.75rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.guess-input button:hover,
+.submit-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Result Container */
+.result-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.result-box {
+  width: 340px;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.result-box.result-win {
+  border-top: 4px solid var(--success);
+}
+
+.result-box.result-lose {
+  border-top: 4px solid var(--danger);
+}
+
+.result-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.result-message {
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.answer-label {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.result-answer {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  background-color: var(--gray-lightest);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.play-again-button {
+  padding: 0.75rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.play-again-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Emoji Puzzle */
+.emoji-puzzle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.emoji-puzzle {
+  font-size: 3rem;
+  text-align: center;
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+.timer {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--dark);
+  background-color: var(--gray-lightest);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.puzzle-category {
+  font-size: 0.875rem;
+  color: var(--gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .game-container {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

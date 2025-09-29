@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="440" height="280" viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="440" height="280" fill="url(#paint0_linear)" />
+  
+  <!-- Grid pattern -->
+  <path opacity="0.1" d="M0 40H440M0 80H440M0 120H440M0 160H440M0 200H440M0 240H440M40 0V280M80 0V280M120 0V280M160 0V280M200 0V280M240 0V280M280 0V280M320 0V280M360 0V280M400 0V280" stroke="white" stroke-width="1"/>
+  
+  <!-- Circular glow effect -->
+  <circle cx="220" cy="140" r="100" fill="url(#paint1_radial)" opacity="0.7" />
+  
+  <!-- Main title -->
+  <text x="220" y="90" font-family="Arial, sans-serif" font-size="40" text-anchor="middle" fill="white" font-weight="bold">Burble</text>
+  <text x="220" y="130" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">Brain Teasers</text>
+  
+  <!-- Game elements -->
+  <g transform="translate(110, 170)">
+    <rect x="0" y="0" width="50" height="50" rx="8" fill="#4F46E5" />
+    <text x="25" y="35" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="white">A</text>
+  </g>
+  
+  <g transform="translate(170, 170)">
+    <rect x="0" y="0" width="50" height="50" rx="8" fill="#7C3AED" />
+    <text x="25" y="35" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="white">B</text>
+  </g>
+  
+  <g transform="translate(230, 170)">
+    <rect x="0" y="0" width="50" height="50" rx="8" fill="#4F46E5" />
+    <text x="25" y="35" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="white">C</text>
+  </g>
+  
+  <!-- Emoji elements -->
+  <text x="65" y="190" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">🧩</text>
+  <text x="315" y="190" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">🧠</text>
+  <text x="375" y="190" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">✨</text>
+  
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="440" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F46E5" />
+      <stop offset="1" stop-color="#7C3AED" />
+    </linearGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 140) rotate(90) scale(100)">
+      <stop offset="0" stop-color="white" stop-opacity="0.3" />
+      <stop offset="1" stop-color="white" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg>

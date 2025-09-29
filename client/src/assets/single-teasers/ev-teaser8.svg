@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  
+  <!-- Background -->
+  <rect x="50" y="50" width="300" height="200" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+  
+  <!-- Horse-like silhouette with stripes -->
+  <path d="M120 200 C 120 160, 150 150, 170 140 C 190 130, 200 130, 230 140 C 250 145, 270 160, 270 200" fill="#333"/>
+  <path d="M180 140 C 180 120, 190 100, 210 90 C 230 80, 240 120, 240 140" fill="#333"/>
+  <path d="M240 140 L 280 120" stroke="#333" stroke-width="10" stroke-linecap="round"/>
+  <path d="M170 140 L 130 120" stroke="#333" stroke-width="10" stroke-linecap="round"/>
+  <path d="M120 200 L 110 240" stroke="#333" stroke-width="8" stroke-linecap="round"/>
+  <path d="M150 200 L 140 240" stroke="#333" stroke-width="8" stroke-linecap="round"/>
+  <path d="M240 200 L 250 240" stroke="#333" stroke-width="8" stroke-linecap="round"/>
+  <path d="M270 200 L 280 240" stroke="#333" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- White stripes -->
+  <path d="M140 160 C 150 150, 160 145, 170 160" fill="#fff"/>
+  <path d="M180 150 C 190 140, 200 135, 210 150" fill="#fff"/>
+  <path d="M220 150 C 230 140, 240 135, 250 150" fill="#fff"/>
+  <path d="M130 180 C 140 170, 150 165, 160 180" fill="#fff"/>
+  <path d="M170 180 C 180 170, 190 165, 200 180" fill="#fff"/>
+  <path d="M210 180 C 220 170, 230 165, 240 180" fill="#fff"/>
+  
+  <!-- Text -->
+  <text x="200" y="270" font-family="Arial" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Guess the Animal!</text>
+</svg>

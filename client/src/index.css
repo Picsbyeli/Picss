@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brighter, more fun colors for kids */
+  --background: 210 50% 98%;
+  --foreground: 222 47% 20%;
+  --muted: 210 40% 93%;
+  --muted-foreground: 215 25% 40%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 20%;
+  --border: 214 32% 90%;
+  --input: 214 32% 90%;
+  --primary: 262 83% 58%; /* Purple as primary */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 172 70% 50%; /* Teal as secondary */
+  --secondary-foreground: 222 47% 20%;
+  --accent: 340 82% 52%; /* Pink as accent */
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --success: 142 70% 45%; /* Green for success feedback */
+  --error: 0 84% 60%; /* Red for error feedback */
+  --ring: 262 83% 58%;
+  --radius: 0.75rem; /* Slightly more rounded corners */
+}
+  .dark {
+      --background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--primary: 207 90% 54%;
+--primary-foreground: 211 100% 99%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--ring: 240 4.9% 83.9%;
+--radius: 0.5rem;
+  }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background-color: hsl(var(--background));
+    /* Lighter, less distracting background pattern - reduced opacity */
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(255, 165, 0, 0.08) 2%, transparent 0%),
+      radial-gradient(circle at 75px 75px, rgba(138, 43, 226, 0.08) 2%, transparent 0%);
+    background-size: 120px 120px; /* Increased spacing for patterns */
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+
+/* Floating decorative elements - reduced opacity and size for better visibility of content */
+body:before,
+body:after {
+  content: "";
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+body:before {
+  top: -120px;
+  right: -120px;
+  background: linear-gradient(45deg, rgba(255, 105, 180, 0.05), rgba(138, 43, 226, 0.05));
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+body:after {
+  bottom: -130px;
+  left: -130px;
+  background: linear-gradient(45deg, rgba(64, 224, 208, 0.05), rgba(255, 165, 0, 0.05));
+  animation: float 30s infinite alternate-reverse ease-in-out;
+}
+
+/* Fun animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30px) rotate(10deg);
+  }
+}
+
+/* Card styling for riddle cards */
+.riddle-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.riddle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.2);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+/* Fun button styling */
+.fun-button {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  color: white;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px -5px hsl(var(--primary) / 0.5);
+}
+
+.fun-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -5px hsl(var(--primary) / 0.7);
+}
+
+/* Celebration animations */
+.celebrate {
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Fun fade-in animation */
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

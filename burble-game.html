@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burble Word Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .difficulty-selector {
+            margin-bottom: 30px;
+        }
+
+        .difficulty-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-btn:hover,
+        .difficulty-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 5px;
+        }
+
+        .word-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 0.3em;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        .guess-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            transition: border-color 0.3s ease;
+        }
+
+        .guess-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+
+        .feedback.incorrect {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+
+        .feedback.hint {
+            background: #fef3c7;
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+
+        .game-over {
+            margin-top: 30px;
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .game-over.win {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .game-over.lose {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .timer {
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 640px) {
+            .game-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .word-display {
+                font-size: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .difficulty-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🧩 Burble</h1>
+        
+        <div class="difficulty-selector">
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                <button class="difficulty-btn active" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <div class="info-card">
+                <div class="info-label">Attempts</div>
+                <div class="info-value" id="attempts">10</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Category</div>
+                <div class="info-value" id="category">-</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Time</div>
+                <div class="info-value timer" id="timer">00:00</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Score</div>
+                <div class="info-value" id="score">0</div>
+            </div>
+        </div>
+
+        <div class="word-display" id="wordDisplay">Click "New Game" to start!</div>
+
+        <div class="input-section">
+            <input 
+                type="text" 
+                class="guess-input" 
+                id="guessInput" 
+                placeholder="Enter your guess..."
+                maxlength="20"
+                disabled
+            >
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="submitBtn" disabled>Submit Guess</button>
+            <button class="btn btn-secondary" id="hintBtn" disabled>Get Hint</button>
+            <button class="btn btn-secondary" id="newGameBtn">New Game</button>
+        </div>
+
+        <div id="feedback"></div>
+        <div id="gameOver"></div>
+    </div>
+
+    <script>
+        class BurbleGame {
+            constructor() {
+                this.currentWord = '';
+                this.currentCategory = '';
+                this.difficulty = 'medium';
+                this.attempts = 10;
+                this.attemptsUsed = 0;
+                this.hintsUsed = 0;
+                this.score = 0;
+                this.startTime = null;
+                this.timerInterval = null;
+                this.gameActive = false;
+                
+                this.initializeGame();
+            }
+
+            initializeGame() {
+                this.setupEventListeners();
+                this.updateDisplay();
+            }
+
+            setupEventListeners() {
+                // Difficulty buttons
+                document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.difficulty = e.target.dataset.difficulty;
+                        this.setAttemptsByDifficulty();
+                        this.updateDisplay();
+                    });
+                });
+
+                // Game buttons
+                document.getElementById('newGameBtn').addEventListener('click', () => this.startNewGame());
+                document.getElementById('submitBtn').addEventListener('click', () => this.submitGuess());
+                document.getElementById('hintBtn').addEventListener('click', () => this.getHint());
+
+                // Input handling
+                document.getElementById('guessInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && this.gameActive) {
+                        this.submitGuess();
+                    }
+                });
+
+                document.getElementById('guessInput').addEventListener('input', (e) => {
+                    e.target.value = e.target.value.toLowerCase();
+                });
+            }
+
+            setAttemptsByDifficulty() {
+                switch (this.difficulty) {
+                    case 'easy':
+                        this.attempts = 15;
+                        break;
+                    case 'medium':
+                        this.attempts = 10;
+                        break;
+                    case 'hard':
+                        this.attempts = 5;
+                        break;
+                }
+            }
+
+            startNewGame() {
+                this.resetGame();
+                this.selectRandomWord();
+                this.startTimer();
+                this.gameActive = true;
+                
+                document.getElementById('guessInput').disabled = false;
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('hintBtn').disabled = false;
+                document.getElementById('guessInput').focus();
+                
+                this.updateDisplay();
+                this.showFeedback('Game started! Guess the word.', 'hint');
+            }
+
+            resetGame() {
+                this.attemptsUsed = 0;
+                this.hintsUsed = 0;
+                this.score = 0;
+                this.gameActive = false;
+                this.clearTimer();
+                document.getElementById('guessInput').value = '';
+                document.getElementById('feedback').innerHTML = '';
+                document.getElementById('gameOver').innerHTML = '';
+            }
+
+            selectRandomWord() {
+                const wordCategories = {
+                    Food: {
+                        4: ['cake', 'taco', 'rice', 'soup', 'bean', 'fish', 'pear', 'plum'],
+                        5: ['pizza', 'apple', 'salad', 'pasta', 'fruit', 'onion', 'bread', 'steak'],
+                        6: ['burger', 'cheese', 'cookie', 'banana', 'orange', 'tomato', 'potato'],
+                        7: ['avocado', 'chicken', 'pancake', 'almond', 'noodles', 'sausage'],
+                        8: ['broccoli', 'mushroom', 'sandwich', 'blueberry', 'eggplant', 'pineapple']
+                    },
+                    Animals: {
+                        4: ['frog', 'wolf', 'bear', 'deer', 'bird', 'fish', 'lion', 'duck'],
+                        5: ['tiger', 'sheep', 'snake', 'mouse', 'panda', 'koala', 'horse'],
+                        6: ['turtle', 'giraffe', 'monkey', 'beaver', 'weasel', 'rabbit'],
+                        7: ['dolphin', 'penguin', 'octopus', 'raccoon', 'leopard', 'buffalo'],
+                        8: ['elephant', 'hedgehog', 'flamingo', 'kangaroo', 'scorpion', 'crocodile']
+                    },
+                    Colors: {
+                        4: ['blue', 'pink', 'gold', 'gray', 'teal', 'cyan'],
+                        5: ['green', 'brown', 'black', 'white', 'amber', 'azure'],
+                        6: ['purple', 'silver', 'indigo', 'maroon', 'ochre', 'orange'],
+                        7: ['crimson', 'magenta', 'cerulean', 'lavender', 'turquoise'],
+                        8: ['burgundy', 'periwinkle', 'sapphire', 'platinum', 'marigold']
+                    },
+                    Cities: {
+                        4: ['rome', 'oslo', 'bali', 'lima', 'york', 'lyon', 'riga', 'kiev'],
+                        5: ['tokyo', 'paris', 'miami', 'delhi', 'dubai', 'seoul', 'cairo'],
+                        6: ['london', 'berlin', 'moscow', 'madrid', 'munich', 'sydney'],
+                        7: ['beijing', 'chicago', 'toronto', 'atlanta', 'houston', 'phoenix'],
+                        8: ['shanghai', 'istanbul', 'budapest', 'montreal', 'florence', 'helsinki']
+                    },
+                    Items: {
+                        4: ['fork', 'lamp', 'book', 'ring', 'desk', 'mask', 'pen', 'phone', 'shoe'],
+                        5: ['table', 'chair', 'clock', 'brush', 'phone', 'purse', 'scarf', 'watch'],
+                        6: ['mirror', 'pillow', 'remote', 'candle', 'wallet', 'hammer', 'laptop'],
+                        7: ['charger', 'suitcase', 'backpack', 'earbuds', 'cushion', 'toaster'],
+                        8: ['scissors', 'notebook', 'umbrella', 'keyboard', 'television', 'bookshelf']
+                    }
+                };
+
+                const categories = Object.keys(wordCategories);
+                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+                
+                const lengths = Object.keys(wordCategories[randomCategory]);
+                const randomLength = lengths[Math.floor(Math.random() * lengths.length)];
+                
+                const words = wordCategories[randomCategory][randomLength];
+                const randomWord = words[Math.floor(Math.random() * words.length)];
+                
+                this.currentWord = randomWord;
+                this.currentCategory = randomCategory;
+            }
+
+            submitGuess() {
+                if (!this.gameActive) return;
+                
+                const guess = document.getElementById('guessInput').value.trim().toLowerCase();
+                if (!guess) return;
+                
+                this.attemptsUsed++;
+                
+                if (guess === this.currentWord) {
+                    this.handleCorrectGuess();
+                } else {
+                    this.handleIncorrectGuess(guess);
+                }
+                
+                document.getElementById('guessInput').value = '';
+                this.updateDisplay();
+            }
+
+            handleCorrectGuess() {
+                this.gameActive = false;
+                this.clearTimer();
+                
+                const timeBonus = Math.max(0, 300 - this.getElapsedSeconds());
+                const attemptBonus = Math.max(0, (this.attempts - this.attemptsUsed) * 10);
+                const hintPenalty = this.hintsUsed * 25;
+                this.score = Math.max(0, 100 + timeBonus + attemptBonus - hintPenalty);
+                
+                this.showFeedback(`🎉 Correct! The word was "${this.currentWord}"`, 'correct');
+                this.showGameOver(true);
+                
+                document.getElementById('guessInput').disabled = true;
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('hintBtn').disabled = true;
+            }
+
+            handleIncorrectGuess(guess) {
+                const feedback = this.generateFeedback(guess);
+                this.showFeedback(`❌ "${guess}" is incorrect. ${feedback}`, 'incorrect');
+                
+                if (this.attemptsUsed >= this.attempts) {
+                    this.gameActive = false;
+                    this.clearTimer();
+                    this.showGameOver(false);
+                    
+                    document.getElementById('guessInput').disabled = true;
+                    document.getElementById('submitBtn').disabled = true;
+                    document.getElementById('hintBtn').disabled = true;
+                }
+            }
+
+            generateFeedback(guess) {
+                const targetWord = this.currentWord;
+                
+                if (guess.length !== targetWord.length) {
+                    return `Try a ${targetWord.length}-letter word.`;
+                }
+                
+                let commonLetters = 0;
+                for (let i = 0; i < Math.min(guess.length, targetWord.length); i++) {
+                    if (targetWord.includes(guess[i])) {
+                        commonLetters++;
+                    }
+                }
+                
+                if (commonLetters === 0) {
+                    return "No matching letters.";
+                } else if (commonLetters === 1) {
+                    return "1 letter is in the word.";
+                } else {
+                    return `${commonLetters} letters are in the word.`;
+                }
+            }
+
+            getHint() {
+                if (!this.gameActive) return;
+                
+                this.hintsUsed++;
+                
+                const hints = [
+                    `The word is ${this.currentWord.length} letters long.`,
+                    `The word is in the ${this.currentCategory} category.`,
+                    `The word starts with "${this.currentWord[0]}".`,
+                    `The word ends with "${this.currentWord[this.currentWord.length - 1]}".`,
+                    `The second letter is "${this.currentWord[1]}".`
+                ];
+                
+                const hintIndex = Math.min(this.hintsUsed - 1, hints.length - 1);
+                this.showFeedback(`💡 Hint ${this.hintsUsed}: ${hints[hintIndex]} (-25 points)`, 'hint');
+                
+                this.updateDisplay();
+            }
+
+            showFeedback(message, type) {
+                const feedback = document.getElementById('feedback');
+                feedback.innerHTML = `<div class="feedback ${type}">${message}</div>`;
+            }
+
+            showGameOver(won) {
+                const gameOver = document.getElementById('gameOver');
+                const elapsedTime = this.formatTime(this.getElapsedSeconds());
+                
+                if (won) {
+                    gameOver.innerHTML = `
+                        <div class="game-over win">
+                            <h3>🎉 Congratulations!</h3>
+                            <p>You guessed "${this.currentWord}" correctly!</p>
+                            <p><strong>Score:</strong> ${this.score} points</p>
+                            <p><strong>Time:</strong> ${elapsedTime}</p>
+                            <p><strong>Attempts:</strong> ${this.attemptsUsed}/${this.attempts}</p>
+                            <p><strong>Hints used:</strong> ${this.hintsUsed}</p>
+                        </div>
+                    `;
+                } else {
+                    gameOver.innerHTML = `
+                        <div class="game-over lose">
+                            <h3>😔 Game Over</h3>
+                            <p>The word was: <strong>"${this.currentWord}"</strong></p>
+                            <p>Category: ${this.currentCategory}</p>
+                            <p><strong>Time:</strong> ${elapsedTime}</p>
+                            <p>Better luck next time!</p>
+                        </div>
+                    `;
+                }
+            }
+
+            startTimer() {
+                this.startTime = Date.now();
+                this.timerInterval = setInterval(() => {
+                    this.updateTimer();
+                }, 1000);
+            }
+
+            clearTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            }
+
+            updateTimer() {
+                const elapsed = this.getElapsedSeconds();
+                document.getElementById('timer').textContent = this.formatTime(elapsed);
+            }
+
+            getElapsedSeconds() {
+                return this.startTime ? Math.floor((Date.now() - this.startTime) / 1000) : 0;
+            }
+
+            formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            updateDisplay() {
+                document.getElementById('attempts').textContent = `${this.attemptsUsed}/${this.attempts}`;
+                document.getElementById('category').textContent = this.currentCategory || '-';
+                document.getElementById('score').textContent = this.score;
+                
+                if (this.currentWord && this.gameActive) {
+                    document.getElementById('wordDisplay').textContent = '_ '.repeat(this.currentWord.length).trim();
+                } else if (this.currentWord && !this.gameActive) {
+                    document.getElementById('wordDisplay').textContent = this.currentWord.toUpperCase();
+                } else {
+                    document.getElementById('wordDisplay').textContent = 'Click "New Game" to start!';
+                }
+            }
+        }
+
+        // Initialize the game when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            new BurbleGame();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burble Brain Teasers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <h1>Burble</h1>
+        <span class="tagline">Brain Teasers</span>
+      </div>
+      <div class="version">v1.0.0</div>
+    </div>
+    
+    <!-- Difficulty selector -->
+    <div class="game-selection">
+      <div class="difficulty-selector">
+        <h3>Difficulty</h3>
+        <div class="options-grid">
+          <div class="difficulty-option" data-difficulty="easy">Easy</div>
+          <div class="difficulty-option active" data-difficulty="medium">Medium</div>
+          <div class="difficulty-option" data-difficulty="hard">Hard</div>
+          <div class="difficulty-option" data-difficulty="extreme">Extreme</div>
+        </div>
+      </div>
+      
+      <!-- Games grid -->
+      <h3>Select a Game</h3>
+      <div class="games-grid">
+        <div class="game-button" data-game="valentine">
+          <div class="game-icon">❤️</div>
+          <div class="game-name">Valentine</div>
+        </div>
+        <div class="game-button" data-game="emoji">
+          <div class="game-icon">🎭</div>
+          <div class="game-name">Emoji Guess</div>
+        </div>
+        <div class="game-button" data-game="burble">
+          <div class="game-icon">🔤</div>
+          <div class="game-name">Burble</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Stats display -->
+    <div class="stats-display">
+      <h3>Your Stats</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="stats-score">0</div>
+          <div class="stat-label">Points</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stats-solved">0</div>
+          <div class="stat-label">Solved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stats-valentines">0</div>
+          <div class="stat-label">Valentine</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stats-emojis">0</div>
+          <div class="stat-label">Emoji</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <button id="full-app-button" class="full-app-button">Open Full App</button>
+    </div>
+  </div>
+  
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

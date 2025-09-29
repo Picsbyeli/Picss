@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  
+  <!-- "ZERO" at the top -->
+  <text x="150" y="80" font-family="Arial" font-size="42" font-weight="bold" fill="#333">ZERO</text>
+  
+  <!-- Three "DEGREES" below -->
+  <text x="75" y="150" font-family="Arial" font-size="32" font-weight="bold" fill="#2563eb">DEGREES</text>
+  <text x="75" y="200" font-family="Arial" font-size="32" font-weight="bold" fill="#2563eb">DEGREES</text>
+  <text x="75" y="250" font-family="Arial" font-size="32" font-weight="bold" fill="#2563eb">DEGREES</text>
+  
+  <!-- Numbers to indicate the count -->
+  <text x="30" y="155" font-family="Arial" font-size="24" font-weight="bold" fill="#dc2626">1</text>
+  <text x="30" y="205" font-family="Arial" font-size="24" font-weight="bold" fill="#dc2626">2</text>
+  <text x="30" y="255" font-family="Arial" font-size="24" font-weight="bold" fill="#dc2626">3</text>
+</svg>

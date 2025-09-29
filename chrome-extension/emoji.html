@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Guess - Burble</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <h1>Emoji Guess</h1>
+        <span class="tagline">Decode the Emoji Combo</span>
+      </div>
+      <div class="nav-buttons">
+        <button id="main-menu-button" class="nav-button">Main Menu</button>
+      </div>
+    </div>
+    
+    <!-- Game content -->
+    <div class="game-section">
+      <!-- Difficulty & Category selector (shown on game start) -->
+      <div id="game-setup" class="game-selection">
+        <div class="difficulty-selector">
+          <h3>Select Difficulty</h3>
+          <div class="options-grid">
+            <div class="difficulty-option" data-difficulty="easy">Easy</div>
+            <div class="difficulty-option active" data-difficulty="medium">Medium</div>
+            <div class="difficulty-option" data-difficulty="hard">Hard</div>
+            <div class="difficulty-option" data-difficulty="extreme">Extreme</div>
+          </div>
+        </div>
+        
+        <div id="category-selector" class="difficulty-selector">
+          <h3>Select Category</h3>
+          <div id="categories-grid" class="options-grid">
+            <!-- Categories will be added here by JavaScript -->
+            <div class="category-option active" data-category-id="all">All Categories</div>
+          </div>
+        </div>
+        
+        <button id="start-game-button" class="submit-button" style="margin-top: 1rem;">Start Game</button>
+      </div>
+      
+      <!-- Game play area (hidden initially) -->
+      <div id="game-play-area" style="display: none;">
+        <div class="timer" id="timer">00:00</div>
+        
+        <div class="emoji-puzzle-container">
+          <div class="puzzle-category" id="puzzle-category">Category: Movies</div>
+          <div id="emoji-puzzle" class="emoji-puzzle">
+            🎬 🧟‍♂️ 🧠
+          </div>
+        </div>
+        
+        <div class="guess-input">
+          <input type="text" id="guess-input" placeholder="What does this emoji combo represent?">
+          <button id="submit-guess-button">Submit</button>
+        </div>
+        
+        <!-- Hint section -->
+        <div class="hint-section">
+          <button id="hint-button" class="hint-button">Get a Hint</button>
+          <div id="hint-display" class="hint-info" style="display: none;">
+            Hint will appear here...
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <button id="full-app-button" class="full-app-button">Open Full App</button>
+    </div>
+  </div>
+  
+  <!-- Result modal (hidden initially) -->
+  <div id="result-container" class="result-container" style="display: none;">
+    <div id="result-box" class="result-box">
+      <div id="result-title" class="result-title">Game Over</div>
+      <div id="result-message" class="result-message">Better luck next time!</div>
+      
+      <div class="answer-label">Correct Answer:</div>
+      <div id="result-answer" class="result-answer">Answer will appear here</div>
+      
+      <div id="time-display" style="text-align: center; margin: 0.5rem 0; font-size: 0.875rem;"></div>
+      <div id="score-display" style="text-align: center; margin-bottom: 1rem; font-weight: 600;"></div>
+      
+      <div class="result-buttons">
+        <button id="next-button" class="next-button" style="display: none;">Next Puzzle</button>
+        <button id="play-again-button" class="play-again-button">Play Again</button>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="emoji.js"></script>
+</body>
+</html>

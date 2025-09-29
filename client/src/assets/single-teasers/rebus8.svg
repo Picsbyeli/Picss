@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#f8f9fa"/>
+  
+  <!-- "FOR" + "GIVE" + "AND" + "FOR" + "GET" -->
+  <text x="40" y="100" font-family="Arial" font-size="36" font-weight="bold" fill="#2563eb">FOR</text>
+  <text x="120" y="100" font-family="Arial" font-size="36" font-weight="bold" fill="#10b981">GIVE</text>
+  <text x="210" y="100" font-family="Arial" font-size="36" font-weight="bold" fill="#000000">AND</text>
+  <text x="290" y="100" font-family="Arial" font-size="36" font-weight="bold" fill="#2563eb">FOR</text>
+  <text x="80" y="160" font-family="Arial" font-size="36" font-weight="bold" fill="#10b981">GET</text>
+  
+  <!-- Connecting lines -->
+  <line x1="40" y1="110" x2="120" y2="110" stroke="#000" stroke-width="2"/>
+  <line x1="205" y1="110" x2="210" y2="110" stroke="#000" stroke-width="2"/>
+  <line x1="290" y1="110" x2="290" y2="150" stroke="#000" stroke-width="2"/>
+  <line x1="290" y1="150" x2="160" y2="150" stroke="#000" stroke-width="2"/>
+</svg>

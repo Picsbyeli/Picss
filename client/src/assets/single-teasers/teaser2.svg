@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="100%" height="100%" fill="#f0f8ff"/>
+  <text x="30" y="40" font-family="Arial" font-size="20" fill="#333">What word in English has:</text>
+  <text x="30" y="70" font-family="Arial" font-size="18" fill="#333">First 2 letters: male</text>
+  <text x="30" y="100" font-family="Arial" font-size="18" fill="#333">First 3 letters: female</text>
+  <text x="30" y="130" font-family="Arial" font-size="18" fill="#333">First 4 letters: great person</text>
+  <text x="30" y="160" font-family="Arial" font-size="18" fill="#333">Entire word: great woman</text>
+  <text x="30" y="190" font-family="Arial" font-size="16" fill="#888">Brain Teaser #2</text>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="150" fill="#f8f9fa"/>
+  
+  <!-- The word "MILLION" with the "i" highlighted -->
+  <text x="60" y="90" font-family="Arial" font-size="48" font-weight="bold">
+    <tspan fill="#333">M</tspan>
+    <tspan fill="#333">I</tspan>
+    <tspan fill="#333">L</tspan>
+    <tspan fill="#333">L</tspan>
+    <tspan fill="#dc2626" font-size="60">I</tspan>
+    <tspan fill="#333">O</tspan>
+    <tspan fill="#333">N</tspan>
+  </text>
+  
+  <!-- Circle around the "i" -->
+  <circle cx="215" cy="85" r="30" fill="none" stroke="#dc2626" stroke-width="3"/>
+  
+  <!-- Arrow pointing to the "i" -->
+  <path d="M215 40 L215 55" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Number "1" above -->
+  <text x="210" y="30" font-family="Arial" font-size="24" font-weight="bold" fill="#dc2626">1</text>
+  
+  <!-- Arrowhead definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+</svg>

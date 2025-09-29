@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Game - Burble</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container valentine-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <h1>Valentine</h1>
+        <span class="tagline">Are You My Valentine?</span>
+      </div>
+      <div class="nav-buttons">
+        <button id="main-menu-button" class="nav-button">Main Menu</button>
+      </div>
+    </div>
+    
+    <!-- Game content -->
+    <div class="game-section">
+      <!-- Difficulty selector (shown on game start) -->
+      <div id="difficulty-selector" class="difficulty-selector">
+        <h3>Select Difficulty</h3>
+        <div class="options-grid">
+          <div class="difficulty-option" data-difficulty="easy">Easy</div>
+          <div class="difficulty-option active" data-difficulty="medium">Medium</div>
+          <div class="difficulty-option" data-difficulty="hard">Hard</div>
+          <div class="difficulty-option" data-difficulty="extreme">Extreme</div>
+        </div>
+        <button id="start-game-button" class="submit-button" style="margin-top: 1rem;">Start Game</button>
+      </div>
+      
+      <!-- Game play area (hidden initially) -->
+      <div id="game-play-area" style="display: none;">
+        <div class="question-container">
+          <div id="question-text" class="question-text">
+            Loading question...
+          </div>
+          <div id="attempts-text" class="attempts-text">
+            Questions remaining: 10
+          </div>
+        </div>
+        
+        <!-- Answer buttons -->
+        <div class="answer-buttons">
+          <button id="yes-button" class="answer-button yes-button">Yes</button>
+          <button id="no-button" class="answer-button no-button">No</button>
+          <button id="unsure-button" class="answer-button unsure-button">Unsure</button>
+        </div>
+        
+        <!-- Hint section -->
+        <div class="hint-section">
+          <button id="hint-button" class="hint-button">Get a Hint</button>
+          <div id="hint-display" class="hint-info" style="display: none;">
+            Hint will appear here...
+          </div>
+        </div>
+        
+        <!-- Guess input (hidden initially) -->
+        <div id="guess-container" style="display: none;">
+          <h3 style="text-align: center; margin-top: 1rem;">Who is my Valentine?</h3>
+          <div class="guess-input">
+            <input type="text" id="guess-input" placeholder="Enter your guess...">
+            <button id="submit-guess-button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <button id="full-app-button" class="full-app-button">Open Full App</button>
+    </div>
+  </div>
+  
+  <!-- Result modal (hidden initially) -->
+  <div id="result-container" class="result-container" style="display: none;">
+    <div id="result-box" class="result-box">
+      <div id="result-title" class="result-title">Game Over</div>
+      <div id="result-message" class="result-message">Better luck next time!</div>
+      
+      <div class="answer-label">Correct Answer:</div>
+      <div id="result-answer" class="result-answer">Answer will appear here</div>
+      
+      <div id="score-display"></div>
+      
+      <button id="play-again-button" class="play-again-button">Play Again</button>
+    </div>
+  </div>
+  
+  <script type="module" src="valentine.js"></script>
+</body>
+</html>

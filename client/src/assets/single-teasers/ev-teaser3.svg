@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="100%" height="100%" fill="#f0f0ff"/>
+  <text x="30" y="40" font-family="Arial" font-size="20" fill="#333">Guess the animal:</text>
+  <text x="30" y="70" font-family="Arial" font-size="16" fill="#333">• Lives in water</text>
+  <text x="30" y="95" font-family="Arial" font-size="16" fill="#333">• Has no backbone</text>
+  <text x="30" y="120" font-family="Arial" font-size="16" fill="#333">• Has eight limbs</text>
+  <text x="30" y="145" font-family="Arial" font-size="16" fill="#333">• Known for intelligence</text>
+  <text x="30" y="180" font-family="Arial" font-size="14" fill="#888">EV Special: Animals</text>
+</svg>

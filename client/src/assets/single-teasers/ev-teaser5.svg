@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="100%" height="100%" fill="#f5f5dc"/>
+  <text x="30" y="40" font-family="Arial" font-size="20" fill="#333">Guess the item:</text>
+  <text x="30" y="70" font-family="Arial" font-size="16" fill="#333">• Found in most homes</text>
+  <text x="30" y="95" font-family="Arial" font-size="16" fill="#333">• Used daily</text>
+  <text x="30" y="120" font-family="Arial" font-size="16" fill="#333">• Comes in different sizes</text>
+  <text x="30" y="145" font-family="Arial" font-size="16" fill="#333">• Can store things</text>
+  <text x="30" y="180" font-family="Arial" font-size="14" fill="#888">EV Special: Items</text>
+</svg>

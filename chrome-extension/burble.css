@@ -1,0 +1,117 @@
+/**
+ * Burble Chrome Extension - Burble Game Styles
+ * 
+ * This file contains styles specific to the Burble word game.
+ */
+
+/* Word display and feedback */
+.burble-game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#attempts-display {
+  font-size: 14px;
+  color: var(--gray-dark);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+#word-display {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.letter-box {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: var(--white);
+  color: var(--dark);
+  text-transform: uppercase;
+}
+
+.correct-position {
+  background-color: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
+.correct-letter {
+  background-color: var(--warning);
+  color: white;
+  border-color: var(--warning);
+}
+
+.wrong-letter {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  border-color: var(--gray-light);
+}
+
+#guess-input-container {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+#guess-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+#guess-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+#feedback-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 250px;
+}
+
+.feedback-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* Animation for letter reveals */
+@keyframes revealLetter {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.letter-box {
+  animation: revealLetter 0.2s ease-out forwards;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 400px) {
+  .letter-box {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}

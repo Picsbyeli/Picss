@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burble - Word Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="burble.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Burble</h1>
+      <h2>Word Game</h2>
+    </header>
+
+    <!-- Difficulty Selector -->
+    <div class="difficulty-selector">
+      <h3>Select Difficulty</h3>
+      <div class="options-grid">
+        <div class="difficulty-option" data-difficulty="easy">Easy</div>
+        <div class="difficulty-option active" data-difficulty="medium">Medium</div>
+        <div class="difficulty-option" data-difficulty="hard">Hard</div>
+      </div>
+    </div>
+
+    <!-- Game Container -->
+    <div class="game-container">
+      <div class="burble-game-area">
+        <div id="attempts-display">Attempts Remaining: <span id="attempts-count">10</span></div>
+        <div id="word-display"></div>
+        
+        <div id="guess-input-container">
+          <input type="text" id="guess-input" placeholder="Enter your guess" maxlength="5">
+          <button id="submit-button" class="primary-button">Submit</button>
+        </div>
+
+        <div id="feedback-container"></div>
+      </div>
+    </div>
+
+    <!-- Game Controls -->
+    <div class="button-container">
+      <button id="hint-button" class="secondary-button">Get Hint (Uses 1 Attempt)</button>
+      <button id="main-menu-button" class="secondary-button">Main Menu</button>
+      <button id="full-app-button" class="secondary-button">Open Full App</button>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="result-container" class="modal-container" style="display: none;">
+      <div id="result-box" class="result-box">
+        <h2 id="result-title">Title</h2>
+        <p id="result-message">Message</p>
+        <p id="result-answer" class="answer-reveal">Answer</p>
+        <p id="score-display">Score</p>
+        <div class="button-container">
+          <button id="play-again-button" class="primary-button">Play Again</button>
+          <button id="next-button" class="primary-button" style="display: none;">Next Word</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="burble.js"></script>
+</body>
+</html>
